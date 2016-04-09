@@ -1,0 +1,4 @@
+../test/targets #directory of the pages crawled
+../test/targets #directory of the files which contain timestamp and frequencies
+settings/words.txt #directory of the words need to find the correlation
+../results  #directory of results
