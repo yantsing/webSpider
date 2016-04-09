@@ -20,6 +20,18 @@ class WebSpider(CrawlSpider):
         "http://news.sina.com.cn/",
         "http://finance.sina.com.cn/",
     ]
+    
+    monthMap = {'1':'January', '2' : 'February', '3' : 'March', '4':'April', 
+            '01':'January', '02' : 'February', '03' : 'March', '04':'April',
+            'jan':'January', 'feb' : 'February', 'mar' : 'March', 'apr':'April',
+            '5' : 'May',  '6' :  'June', '7' : 'July', '8':'August', 
+            '05' : 'May',  '06' :  'June', '07' : 'July', '08':'August', 
+            'may' : 'May',  'jun' :  'June', 'jul' : 'July', 'aug':'August', 
+            '9' : 'September',  '10' : 'October', '11' : 'November', '12' : 'December',
+            'sep' : 'September',  'oct' : 'October', 'nov' : 'November', 'dec' : 'December',
+            '09' : 'September'}
+            
+    apmMap = {'a.m.':'am', 'a.m':'am','p.m.':'pm','p.m':'pm'} 
         
     def parse(self, response):
         duplicate = False
@@ -93,7 +105,7 @@ class WebSpider(CrawlSpider):
 #                        if line == url:
 #                            self.logger.debug('%s duplicate in yield request!', response.url)
 #                            continue
-                yield scrapy.Request(url, callback=self.parse)
+                #yield scrapy.Request(url, callback=self.parse)
         except:
             # TO DO!
             # Complete the exception process
