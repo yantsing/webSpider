@@ -14,6 +14,7 @@ from scrapy.linkextractors import LinkExtractor
 
 class WebSpider(CrawlSpider):
     name = "example"
+    dirc = "english"
     allowed_domains = ["sina.com.cn"]
     start_urls = [
         "http://tech.sina.com.cn/",
@@ -48,8 +49,8 @@ class WebSpider(CrawlSpider):
         filename = self.name + str(hashresult) +'.html'
         
         
-        if os.path.exists(self.name + os.sep + filename):
-            with open(self.name + os.sep + filename,'r') as f:
+        if os.path.exists(self.dirc + os.sep + filename):
+            with open(self.dirc + os.sep + filename,'r') as f:
                 line = f.readline()
                 if line == url:
                     #[:-1] is used to remove '/r/n'
@@ -67,7 +68,7 @@ class WebSpider(CrawlSpider):
             
             try:   
                 if timeStamp != None:
-                    with open(self.name + os.sep + filename, 'wb') as f:
+                    with open(self.dirc + os.sep + filename, 'wb') as f:
                         f.write(url)
                         f.write("\r\n")
                         
@@ -79,14 +80,15 @@ class WebSpider(CrawlSpider):
                         f.write(title)
                         f.write("\r\n")  
                         
-                        f.write(str(time.gmtime(timeStamp)))
+                        
+                        f.write(str(datetime.datetime.fromtimestamp(timeStamp)))
                         f.write("\r\n")
                         
                         for  e in response.xpath('//p').extract():
                             f.write(e.encode('utf-8') + '\r\n')
                 else:
                         self.logger.critical('%s not find time!',response.url)
-                        with open(self.name + os.sep + "not found", 'a') as ef:
+                        with open(self.dirc + os.sep + "not found", 'a') as ef:
                             ef.write(response.url)
                             ef.write("\r\n")      
             except:
@@ -105,7 +107,7 @@ class WebSpider(CrawlSpider):
 #                        if line == url:
 #                            self.logger.debug('%s duplicate in yield request!', response.url)
 #                            continue
-                #yield scrapy.Request(url, callback=self.parse)
+                yield scrapy.Request(url, callback=self.parse)
         except:
             # TO DO!
             # Complete the exception process

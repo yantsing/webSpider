@@ -24,8 +24,8 @@ class WalstreetSpider(WebSpider):
     allowed_domains = ["wsj.com",
                        "wsj-asia.com"]
     start_urls = [
-        #"http://www.wsj.com"
-        "http://blogs.wsj.com/washwire/2011/07/21/senators-price-out-a-detour-around-pakistan/"
+        "http://www.wsj.com"
+        #"http://blogs.wsj.com/washwire/2011/07/21/senators-price-out-a-detour-around-pakistan/"
     ]
     
     deltaZone = datetime.timedelta(hours = -4)
