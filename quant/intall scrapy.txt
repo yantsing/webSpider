@@ -1,0 +1,15 @@
+For ubuntu
+1. wget "https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-4.0.0-Linux-x86.sh"
+   if 64-bit
+   wget "https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-4.0.0-Linux-x86_64.sh"
+2. Get code from github
+   git clone http://github.com/yantsing/webSpider.git spider
+3. Enter the directory: spider
+   cd webspider
+   cd spider
+   cd spider
+   cd quant
+4. run the crawler
+   scrapy crawl wallstreet -L CRITICAL
+   scrapy crawl bloomberg -L CRITICAL
+
