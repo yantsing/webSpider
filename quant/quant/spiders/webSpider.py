@@ -87,8 +87,8 @@ class WebSpider(CrawlSpider):
                         for  e in response.xpath('//p').extract():
                             f.write(e.encode('utf-8') + '\r\n')
                 else:
-                        self.logger.critical('%s not find time!',response.url)
-                        with open(self.dirc + os.sep + "not found", 'a') as ef:
+                        self.logger.critical('%s not find time!!!',response.url)
+                        with open(self.dirc + os.sep + "not_found_" + self.name, 'a') as ef:
                             ef.write(response.url)
                             ef.write("\r\n")      
             except:

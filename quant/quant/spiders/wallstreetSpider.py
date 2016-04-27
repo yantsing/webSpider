@@ -16,7 +16,7 @@ class WalstreetSpider(WebSpider):
     """Spider for the websit the header of which has Last_Modified field"""
     def __init__(self):
         try:
-            os.mkdir("walstreet")
+            os.mkdir("english")
         except:
             self.logger.error("Creating directory fail!")
         
